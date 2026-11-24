@@ -1,15 +1,91 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tes Koneksi Firebase + Netlify</title>
-</head>
-<body>
-  <h2>Tes Koneksi Firebase</h2>
-  <button id="btn-test">Kirim Data Tes ke Firestore</button>
-  <p id="status">Status: Menunggu...</p>
-
-  <script type="module" src="/src/main.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#123d31">
+    <meta name="description" content="Kelola stok, transaksi, dan operasional gudang sembako dalam satu ruang kerja.">
+    <link rel="icon" href="/warehouse.svg" type="image/svg+xml">
+    <title>GudangSembako Cloud Pro — Operasional Gudang</title>
+  </head>
+  <body>
+    <main id="auth" class="auth-layout">
+      <section class="auth-side" aria-label="GudangSembako Cloud Pro">
+        <a class="brand" href="/" aria-label="GudangSembako, beranda"><img src="/warehouse.svg" width="44" height="44" alt=""><span>Gudang<span class="brand-accent">Sembako</span><small>CLOUD PRO</small></span></a>
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> RUANG KERJA OPERASIONAL</p>
+          <h1>Semua stok.<br><em>Satu kendali.</em></h1>
+          <p>Pantau persediaan, catat arus barang, dan kelola lokasi penyimpanan dari HP atau komputer.</p>
+        </div>
+        <svg class="hero-illustration" viewBox="0 0 540 335" fill="none" aria-hidden="true">
+          <defs>
+            <pattern id="dash-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0v24" stroke="#b2e8bc" stroke-opacity=".13"/></pattern>
+            <linearGradient id="warehouse-wall" x1="150" y1="100" x2="350" y2="310" gradientUnits="userSpaceOnUse"><stop stop-color="#2e7555"/><stop offset="1" stop-color="#1b5641"/></linearGradient>
+          </defs>
+          <path fill="url(#dash-grid)" d="M0 0h540v335H0z"/>
+          <path d="M35 258 303 113l209 112-263 105L35 258Z" fill="#0d2d24" stroke="#78aa87" stroke-opacity=".5"/>
+          <path d="m171 241 91 49 172-92-92-53-171 96Z" fill="#102e24"/>
+          <path d="m118 117 143 78v100l-143-80V117Z" fill="url(#warehouse-wall)" stroke="#9ccf9f"/>
+          <path d="m261 195 176-95v100l-176 95V195Z" fill="#1c5540" stroke="#9ccf9f"/>
+          <path d="m104 116 181-98 166 78-190 103-157-83Z" fill="#75a978" stroke="#c2ebae"/>
+          <path d="m104 116 157 83 190-103v12l-190 104-157-84v-12Z" fill="#3e8463" stroke="#b4df9d"/>
+          <path d="m138 119 180-86m-144 106 183-87m-145 107 185-87m-149 107 188-89" stroke="#d5f3b9" stroke-opacity=".58"/>
+          <path d="m295 276 51-27v-62l-51 28v61Z" fill="#0e3428" stroke="#a1cf9a"/>
+          <path d="m302 269 37-20v-35l-37 20v35Z" fill="#448565"/>
+          <path d="m303 239 36-19m-36 28 36-19m-36 28 36-19" stroke="#addaa0" stroke-opacity=".65"/>
+          <path d="m374 233 38-21v-62l-38 21v62Z" fill="#123b2d" stroke="#a1cf9a"/>
+          <path d="m381 181 24-13v26l-24 13v-26Z" fill="#69a577"/>
+          <path d="m137 155 32 18v23l-32-18v-23Zm49 27 32 18v23l-32-18v-23Z" fill="#103a2d" stroke="#a1cf9a"/>
+          <path d="m151 163v23m49 4v23" stroke="#a1cf9a"/>
+          <path d="m75 219 30-16 30 16-30 17-30-17Z" fill="#e0edaa" stroke="#e5f2b4"/>
+          <path d="m75 219 30 17v30l-30-17v-30Z" fill="#9ab56f" stroke="#e5f2b4"/>
+          <path d="m105 236 30-17v30l-30 17v-30Z" fill="#bfd489" stroke="#e5f2b4"/>
+          <path d="m91 211 29 16v11m-30 4 6 4m18-4 10-6m-10 11 10-6" stroke="#325841" stroke-width="1.4"/>
+          <path d="m362 261 27-14 25 14-25 15-27-15Z" fill="#a8c885" stroke="#e5f2b4"/>
+          <path d="m362 261 27 15v26l-27-15v-26Z" fill="#7da667" stroke="#e5f2b4"/>
+          <path d="m389 276 25-15v26l-25 15v-26Z" fill="#9eb776" stroke="#e5f2b4"/>
+          <path d="m374 255 28 15v9m-32 2 8 4m20-4 8-5" stroke="#325841" stroke-width="1.4"/>
+          <path d="M57 129v-17h17m391 34h17v17M57 292v17h17m391 0h17v-17" stroke="#a6d69d" stroke-opacity=".75"/>
+          <circle cx="83" cy="84" r="3" fill="#d5eba4"/><circle cx="458" cy="51" r="3" fill="#d5eba4"/><circle cx="468" cy="247" r="3" fill="#d5eba4"/>
+        </svg>
+        <div class="hero-features"><span><i data-lucide="layers-3"></i> Stok & lot</span><span><i data-lucide="scan-barcode"></i> Scan lokasi</span><span><i data-lucide="clipboard-list"></i> Jejak transaksi</span></div>
+      </section>
+      <section class="auth-main" aria-labelledby="auth-title">
+        <div class="auth-toolbar"><span><span class="signal"></span> PORTAL GUDANG</span><span class="locale">ID <i data-lucide="globe-2"></i></span></div>
+        <div class="auth-content">
+          <span class="auth-icon"><i data-lucide="shield-check"></i></span>
+          <p class="section-tag">AKSES TIM GUDANG</p>
+          <h2 id="auth-title">Masuk ke gudang</h2>
+          <p id="auth-copy">Gunakan akun yang diberikan pengelola gudang untuk melanjutkan.</p>
+          <form id="auth-form">
+            <label id="email-field">Alamat email<input id="email" name="email" type="email" autocomplete="username" placeholder="nama@perusahaan.id" maxlength="254" required></label>
+            <label id="password-field">Kata sandi<span class="password-wrap"><input id="password" name="password" type="password" autocomplete="current-password" placeholder="Masukkan kata sandi" required><button id="password-toggle" type="button" aria-label="Tampilkan kata sandi" aria-pressed="false"><i data-lucide="eye"></i></button></span></label>
+            <p id="auth-message" class="form-message" role="status" hidden></p>
+            <button class="button primary auth-submit" type="submit"><span id="auth-submit-text">Masuk ke aplikasi</span><i data-lucide="arrow-right"></i></button>
+            <button id="auth-switch" class="text-button" type="button">Lupa kata sandi?</button>
+          </form>
+          <noscript><p class="form-message error">Aktifkan JavaScript untuk menggunakan aplikasi gudang.</p></noscript>
+        </div>
+        <footer class="auth-footer"><span>GudangSembako Cloud Pro</span><span><i data-lucide="lock-keyhole"></i> Akses khusus tim</span></footer>
+      </section>
+    </main>
+    <div id="app" class="app-shell" hidden>
+      <aside id="sidebar" class="sidebar">
+        <a href="/" class="brand"><img src="/warehouse.svg" width="42" height="42" alt=""><span>Gudang<span class="brand-accent">Sembako</span><small>CLOUD PRO</small></span></a>
+        <p class="sidebar-label">OPERASIONAL</p>
+        <nav id="navigation" aria-label="Navigasi utama"></nav>
+        <div class="sidebar-footer"><span><i data-lucide="shield-check"></i> Ruang kerja tim</span><span id="sidebar-role"></span></div>
+      </aside>
+      <div class="app-main">
+        <header class="app-header">
+          <div class="app-header-start"><button id="menu" class="icon-button mobile-menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sidebar"><i data-lucide="menu"></i></button><span id="breadcrumb">Operasional / Ringkasan</span></div>
+          <div class="header-actions"><button class="icon-button" id="refresh" type="button" title="Muat ulang data" aria-label="Muat ulang data"><i data-lucide="refresh-cw"></i></button><span class="avatar" id="avatar" aria-hidden="true"></span><span id="account-name" class="account-name"></span><button class="icon-button" id="logout" type="button" title="Keluar" aria-label="Keluar"><i data-lucide="log-out"></i></button></div>
+        </header>
+        <main id="workspace" class="workspace"></main>
+      </div>
+    </div>
+    <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-inner"><div class="dialog-head"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" type="button" aria-label="Tutup"><i data-lucide="x"></i></button></div><div id="dialog-content"></div></div></dialog>
+    <div id="toast" class="toast" role="status" hidden></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
