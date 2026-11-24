@@ -1,6 +1,6 @@
 # GudangSembako Cloud Pro
 
-Aplikasi operasional gudang dengan stok bersama, akun berbasis undangan, serta riwayat mutasi yang mencatat petugas. Data disimpan di Netlify Database. Aplikasi dimulai dengan gudang kosong, tanpa akun atau data contoh bawaan.
+Aplikasi operasional gudang dengan stok bersama, serta riwayat mutasi yang mencatat petugas. Data disimpan di Netlify Database. Aplikasi dimulai dengan gudang kosong, buatkan 1 akun pertama dengan alamat email 'arifrahman.if9@gmail.com' dan password '123456' untuk login dan mengedit semua menu dan database data.
 
 ## Memulai
 
